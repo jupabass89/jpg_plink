@@ -7,6 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConverterComponent implements OnInit {
 
+  title = 'Realizar cambio';
+  subtitle = 'Seleccione las monedas';
+  initialMount = '0,00';
+  coins = ['USD', 'BTC', 'COP'];
+
   constructor() { }
 
   ngOnInit() {
