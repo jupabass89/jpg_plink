@@ -1,1 +1,11 @@
 @import 'equalizer';
+@import './app/screens/components/variavbles.scss';
+
+html,
+body {
+  height: 100%;
+}
+body {
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  margin: 0;
+}

@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ConverterComponent } from './screens/components/converter/converter.component';
 import { CoinListComponent } from './screens/components/coin-list/coin-list.component';
+import { AppMaterialModule } from './modules/app-material/app-material.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { CoinListComponent } from './screens/components/coin-list/coin-list.comp
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AppMaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]

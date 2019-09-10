@@ -1,11 +1,12 @@
 <div class="cripto-app">
   <div class="main-frame">
-    <div class="option">REALIZAR CAMBIO</div>
-    <div class="option">LISTADO DE MONEDAS</div>
-    <!-- <app-converter class="converter"></app-converter> -->
-    <app-coin-list class="coin-list"></app-coin-list>
+    <mat-tab-group>
+      <mat-tab label="REALIZAR CAMBIO">
+        <app-converter class="converter"></app-converter>
+      </mat-tab>
+      <mat-tab label="LISTADO DE MONEDAS">
+        <app-coin-list class="coin-list"></app-coin-list>
+      </mat-tab>
+    </mat-tab-group>
   </div>
 </div>
-
-
-<!-- <router-outlet></router-outlet> -->
