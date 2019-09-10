@@ -3,11 +3,10 @@
 :host {
   align-items: center;
   background-image: url('../assets/footer.png');
-  background-size: 100vh;
+  background-size: cover;
   display: flex;
   height: 100vh;
   justify-content: center;
-  width: 100vw;
 }
 
 .option {
