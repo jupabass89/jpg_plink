@@ -12,6 +12,7 @@
   align-items: center;
   display: flex;
   flex-direction: column;
+  height: 100vh;
   padding: 60px 160px;
 }
 
@@ -56,6 +57,10 @@
   letter-spacing: 1.14px;
   line-height: 27px;
   width: 190px;
+}
+
+.scroll {
+  overflow: auto;
 }
 
 .yes {

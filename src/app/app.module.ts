@@ -3,9 +3,10 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ConverterComponent } from './screens/components/converter/converter.component';
-import { CoinListComponent } from './screens/components/coin-list/coin-list.component';
+import { ConverterComponent } from './screens/converter/converter.component';
+import { CoinListComponent } from './screens/coin-list/coin-list.component';
 import { AppMaterialModule } from './modules/app-material/app-material.module';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { AppMaterialModule } from './modules/app-material/app-material.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AppMaterialModule
+    AppMaterialModule,
+    InfiniteScrollModule
   ],
   providers: [],
   bootstrap: [AppComponent]
