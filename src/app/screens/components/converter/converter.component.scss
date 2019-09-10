@@ -1,9 +1,9 @@
-@import '../variavbles.scss';
+@import '../variavbles';
 
 * {
   color: $grey-light;
   font-family: $font;
-  font-size: 20px;
+  font-size: 25px;
   font-weight: 100;
   letter-spacing: 3px;
 }
@@ -15,69 +15,61 @@
   padding: 45px;
 }
 
+.coin::before {
+  background: url('../../../../assets/down-arrow.png') no-repeat;
+  background-size: 20px 20px;
+  content: '';
+  height: 20px;
+  position: absolute;
+  right: 20px;
+  top: 25px;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: 20px;
+}
+
+.coin-result {
+  background-color: $background;
+  pointer-events: none;
+}
+
+.coin-result,
+.coin-mount {
+  &::before {
+    content: '$';
+    font-size: 25px;
+    height: 20px;
+    left: 20px;
+    position: absolute;
+    top: 8px;
+    width: 20px;
+  }
+}
+
 .exchange {
   align-self: center;
   cursor: pointer;
   height: 30px;
-  //margin-top: 175px;
   width: 30px;
 }
 
-.form {
-  .coin {
-    &::before {
-      background: url('../../../../assets/down-arrow.png') no-repeat;
-      background-size: 20px 20px;
-      content: '';
-      height: 20px;
-      position: absolute;
-      right: 20px;
-      top: 20px;
-      -webkit-transform: translateY(-50%);
-      transform: translateY(-50%);
-      width: 20px;
-    }
-  }
+.input {
+  align-items: center;
+  border: solid 1px $grey-light;
+  border-radius: 20px;
+  cursor: pointer;
+  display: flex;
+  height: 50px;
+  justify-content: center;
+  margin: 30px 20px;
+  position: relative;
+  width: 330px;
 
-  .coin-result {
-    background-color: $background;
-    pointer-events: none;
-  }
-
-  .coin-result,
-  .coin-mount {
-    &::before {
-      content: '$';
-      font-size: 20px;
-      height: 20px;
-      left: 20px;
-      position: absolute;
-      top: 20px;
-      -webkit-transform: translateY(-50%);
-      transform: translateY(-50%);
-      width: 20px;
-    }
-  }
-
-  .input {
-    align-items: center;
-    border: solid 1px $grey-light;
-    border-radius: 20px;
-    cursor: pointer;
-    display: flex;
-    height: 50px;
-    justify-content: center;
-    margin: 30px 20px;
+  .mount-input {
+    height: 30px;
     position: relative;
-    width: 330px;
-
-    .mount-input {
-      font-size: 20px;
-      height: 30px;
-      position: relative;
-      text-align: center;
-      width: 250px;
-    }
+    text-align: center;
+    width: 250px;
   }
 }
 
