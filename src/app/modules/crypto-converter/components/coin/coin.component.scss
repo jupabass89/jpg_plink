@@ -1,0 +1,88 @@
+@import '../../variables.scss';
+
+* {
+  color: $black;
+  font-family: $font;
+  font-size: 15px;
+  font-weight: 100;
+  letter-spacing: 3px;;
+}
+
+:host {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.table-row {
+  align-items: center;
+  border: 1px solid $grey-light;
+  column-gap: 80px;
+  display: grid;
+  grid-template-columns: repeat(4, 160px);
+  padding: 17px;
+  width: 900px;;
+}
+
+.price {
+  color: $blue;
+  font-size: 20px;
+  font-weight: bold;
+  height: 27px;
+  letter-spacing: 1.14px;
+  line-height: 27px;
+  width: 190px;
+}
+
+.type {
+  display: flex;
+  justify-content: center;
+  margin-left: 60px;
+  position: relative;
+  text-align: center;
+  width: 30px;
+}
+
+.yes {
+  color: $green;
+
+  &::before {
+    background-color: $green;
+    background-size: 20px 20px;
+    border-radius: 50%;
+    content: '';
+    height: 20px;
+    left: -25px;
+    position: absolute;
+    top: 10px;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    width: 20px;
+  }
+}
+
+.no {
+  color: $red;
+
+  &::before {
+    background-color: $red;
+    background-size: 20px 20px;
+    border-radius: 50%;
+    content: '';
+    height: 20px;
+    left: -25px;
+    position: absolute;
+    top: 10px;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    width: 20px;
+  }
+}
+
+.shuffle {
+  cursor: pointer;
+  height: 30px;
+  justify-self: center;
+  width: 40px;
+}

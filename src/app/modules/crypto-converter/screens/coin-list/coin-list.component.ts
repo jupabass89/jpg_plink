@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Coin } from '../../models/coin';
 
 @Component({
   selector: 'app-coin-list',
@@ -7,72 +8,42 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class CoinListComponent implements OnInit {
 
-  cripto = false;
-
-  item1 = {
-    name: 'BTC',
-    price: '14000',
-    cripto: 'yes'
-  };
-
-  item2 = {
-    name: 'USD',
-    price: '14000',
-    cripto: 'yes'
-  };
-
-  item3 = {
-    name: 'AsiaCoin',
-    price: '15000',
-    cripto: 'no'
-  };
-
-  items = [
-    this.item1,
-    this.item3,
-    this.item1,
-    this.item3,
-    this.item2,
-    this.item3,
-    this.item1,
-    this.item2,
-    this.item1,
-    this.item3,
-    this.item1,
-    this.item3,
-    this.item2,
-    this.item3,
-    this.item3,
-    this.item1,
-    this.item3,
-    this.item2,
-    this.item3,
-    this.item3,
-    this.item2,
-    this.item3,
-    this.item1,
-    this.item2,
-    this.item1,
-    this.item3
+  coins: Coin[] = [
+   {
+      id_currency: '56',
+      name: 'USD',
+      price: '14,000',
+      crypto: 'no'
+    },
+    {
+      id_currency: '900',
+      name: 'BTC',
+      price: '14,000',
+      crypto: 'yes'
+    }
   ];
 
-  increaseSize = 20;
-  currentMax = 20;
-  visibleCoins = this.items;
-  throttle = 600;
-  scrollDistance = 3;
+  coin1: Coin = {
+    id_currency: '56',
+    name: 'USD',
+    price: '14,000',
+    crypto: 'no'
+  };
 
-  linesToWrite = this.items;
+  coin2: Coin = {
+    id_currency: '900',
+    name: 'BTC',
+    price: '14,000',
+    crypto: 'yes'
+  };
 
   constructor() { }
 
   ngOnInit() {
-    this.visibleCoins = this.items.slice(0, this.currentMax);
+    this.coins.push(this.coin1, this.coin2);
   }
 
   onScrollDown() {
-    // this.visibleCoins = this.visibleCoins.concat(this.items.slice(this.currentMax, this.currentMax + this.increaseSize));
-    // this.currentMax += this.increaseSize;
     console.log('scroll');
   }
 }
