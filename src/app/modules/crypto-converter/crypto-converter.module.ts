@@ -7,10 +7,18 @@ import { CoinComponent } from './components/coin/coin.component';
 import { AppMaterialModule } from '../app-material/app-material.module';
 
 @NgModule({
-  declarations: [CryptoConverterComponent, CoinListComponent, ConverterComponent, CoinComponent],
+  declarations: [
+    CryptoConverterComponent,
+    CoinListComponent,
+    ConverterComponent,
+    CoinComponent
+  ],
   imports: [
     CommonModule,
     AppMaterialModule
+
+  ], exports: [
+    CryptoConverterComponent
   ]
 })
 export class CryptoConverterModule { }
