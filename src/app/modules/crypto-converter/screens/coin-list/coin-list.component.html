@@ -1,0 +1,14 @@
+<div>
+  <div class="table-row table-header">
+    <h1>Nombre</h1>
+    <h1>Precio</h1>
+    <h1>Criptomoneda</h1>
+    <h1 class="convert">Convertir</h1>
+  </div>
+  <div class="table-row item-coin scroll" *ngFor="let item of items">
+    <h1>{{item.name}}</h1>
+    <h1 class="price">$ {{item.price}}</h1>
+    <div class="type yes" [ngClass]="{yes: item.cripto === 'yes', no: item.cripto === 'no'}">{{item.cripto}}</div>
+    <img class="shuffle" src="../../../../assets/shuffle.png" alt="shuffle">
+  </div>
+</div>
