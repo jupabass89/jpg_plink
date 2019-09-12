@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Coin } from '../../models/coin';
+import { CoinService } from '../../services/coin.service';
 
 @Component({
   selector: 'app-coin-list',
@@ -37,10 +38,13 @@ export class CoinListComponent implements OnInit {
     crypto: 'yes'
   };
 
-  constructor() { }
+
+  constructor(private coinService: CoinService) { }
 
   ngOnInit() {
-    this.coins.push(this.coin1, this.coin2);
+    this.coinService.convert(10, 'btc', 'usd').subscribe(res => console.log(res, 'RESPONSE!'));
+
+    //this.coins.push(this.coin1, this.coin2);
   }
 
   onScrollDown() {
