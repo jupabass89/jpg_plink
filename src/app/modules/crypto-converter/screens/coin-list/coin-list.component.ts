@@ -9,45 +9,47 @@ import { CoinService } from '../../services/coin.service';
 })
 export class CoinListComponent implements OnInit {
 
-  coins: Coin[] = [
-   {
-      id_currency: '56',
-      name: 'USD',
-      price: '14,000',
-      crypto: 'no'
-    },
-    {
-      id_currency: '900',
-      name: 'BTC',
-      price: '14,000',
-      crypto: 'yes'
-    }
-  ];
-
-  coin1: Coin = {
-    id_currency: '56',
-    name: 'USD',
-    price: '14,000',
-    crypto: 'no'
-  };
-
-  coin2: Coin = {
-    id_currency: '900',
-    name: 'BTC',
-    price: '14,000',
-    crypto: 'yes'
-  };
+  coins: Coin[];
 
 
   constructor(private coinService: CoinService) { }
 
   ngOnInit() {
-    this.coinService.convert(10, 'btc', 'usd').subscribe(res => console.log(res, 'RESPONSE!'));
+    //convert
+   // this.coinService.convert(10, 'btc', 'usd').subscribe(res => console.log(res, 'RESPONSE 1!'));
 
-    //this.coins.push(this.coin1, this.coin2);
+    //prices-list
+    this.coinService.getPrices().subscribe(response => {
+      response.prices.map(res => {
+        res.price = new Intl.NumberFormat('en-us', { minimumFractionDigits: 1 }).format(res.price);
+        res.crypto === '0' ? res.crypto = 'No' : res.crypto = 'Yes';
+      });
+      this.coins = response.prices;
+      // this.coins.sort((a, b) => {
+      //   if (a.name > b.name) {
+      //     return 1;
+      //   }
+      //   if (a.name < b.name) {
+      //     return -1;
+      //   }
+      //   return 0;
+      // });
+      // console.log(this.coins);
+    });
+
+    //crypto
+    // this.coinService.getCryptoCoins().subscribe((res)=> {
+    //   array.push(res.digital_currencies);
+    // });
+
+    //fiat
+    // this.coinService.getCoins().subscribe(res =>  {
+    //   array.push(res.fiat_currencies);
+    // });
   }
 
+
   onScrollDown() {
-    console.log('scroll');
+    //console.log('scroll');
   }
 }

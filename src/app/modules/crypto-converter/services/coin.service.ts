@@ -11,6 +11,7 @@ export class CoinService {
   constructor(private http: HttpClient) { }
 
   private url = environment.uralApi;
+  private coinReference = 'btc';
 
   private httpOptions = {
     headers: new HttpHeaders({
@@ -20,10 +21,19 @@ export class CoinService {
   };
 
   getPrices(): Observable<any> {
-    return this.http.get<any>(`${this.url}/prices`, this.httpOptions);
+    return this.http.get<any>(`${this.url}/prices?coin=${this.coinReference}`, this.httpOptions);
   }
 
   convert(mount: number, coin1: string, coin2: string): Observable<any> {
     return this.http.get(`${this.url}/convert?qty=${mount}&from=${coin1}&to=${coin2}`, this.httpOptions);
   }
+
+  getCryptoCoins(): Observable<any> {
+    return this.http.get(`${this.url}/digital-currency-symbols`, this.httpOptions);
+  }
+
+  getCoins(): Observable<any> {
+    return this.http.get(`${this.url}/fiat-currency-symbols`, this.httpOptions);
+  }
+
 }
