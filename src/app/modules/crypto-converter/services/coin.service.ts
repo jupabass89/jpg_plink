@@ -25,15 +25,6 @@ export class CoinService {
   }
 
   convert(mount: number, coin1: string, coin2: string): Observable<any> {
-    return this.http.get(`${this.url}/convert?qty=${mount}&from=${coin1}&to=${coin2}`, this.httpOptions);
+    return this.http.get<any>(`${this.url}/convert?qty=${mount}&from=${coin1}&to=${coin2}`, this.httpOptions);
   }
-
-  getCryptoCoins(): Observable<any> {
-    return this.http.get(`${this.url}/digital-currency-symbols`, this.httpOptions);
-  }
-
-  getCoins(): Observable<any> {
-    return this.http.get(`${this.url}/fiat-currency-symbols`, this.httpOptions);
-  }
-
 }

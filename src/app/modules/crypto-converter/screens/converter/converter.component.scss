@@ -9,8 +9,9 @@
 }
 
 :host {
+  align-content: center;
   display: flex;
-  height: 580px;
+  height: 590px;
   justify-content: center;
   padding: 45px;
 }
@@ -70,6 +71,11 @@
     position: relative;
     text-align: center;
     width: 250px;
+  }
+
+  .selector {
+    background-color: rgb(255, 255, 255);
+    width: 100px;
   }
 }
 
