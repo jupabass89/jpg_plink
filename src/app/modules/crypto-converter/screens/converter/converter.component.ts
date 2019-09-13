@@ -16,43 +16,57 @@ export class ConverterComponent implements OnInit {
   title = 'Realizar cambio';
   subtitle = 'Seleccione las monedas';
   coins = [];
-  from = 'BTC';
-  to = 'USD';
   form: FormGroup;
   result: '';
+  amount = '0,00';
+
 
   ngOnInit() {
-    // get all coins
-    this.coinService.getPrices().subscribe((res) => {
-      res.prices.map(coin => {
-        coin = coin.name;
-        this.coins.push(coin);
-      });
-      this.coins.sort();
-    });
+    this.getCoins();
 
-    // set a form
     this.form = this.formBuilder.group({
-      amount: ['0,00', Validators.compose([Validators.required, Validators.min(0)])],
-      from: ['', Validators.compose([Validators.required])],
-      to: ['', Validators.compose([Validators.required])],
+      amount: ['', Validators.compose([Validators.required, Validators.min(0)])],
+      from: ['BTC', Validators.compose([Validators.required])],
+      to: ['USD', Validators.compose([Validators.required])],
     });
-
-
-
-    this.convertCoins();
   }
 
   convertCoins() {
-    const amount = this.form.get('amount').value;
-    const from = this.form.get('from').value;
-    const to = this.form.get('to').value;
-    this.coinService.convert(amount, from, to).subscribe(res => {
-      console.log(res);
-      this.result = res.to_quantity;
+    if (this.amount !== ('0,00' && '0') && this.amount !== '') {
+      const amount = this.form.get('amount').value;
+      const from = this.form.get('from').value;
+      const to = this.form.get('to').value;
+      this.coinService.convert(amount, from, to).subscribe(res => {
+        console.log(res);
+        return this.result = res.to_quantity;
+      });
+    }
+    this.amount = '0,00';
+    return this.result = '';
+  }
+
+  getCoins() {
+    this.coinService.getPrices().subscribe((res) => {
+      res.prices.map(coin => {
+        coin = coin.id_currency;
+        this.coins.push(coin);
+      });
+      this.coins.push('BTC');
+      this.coins.sort();
     });
   }
 
+  exchange() {
+    const from = this.form.get('from').value;
+    const to = this.form.get('to').value;
+    this.form.get('from').setValue(to);
+    this.form.get('to').setValue(from);
+    this.convertCoins();
+  }
+
+  editAmount() {
+    this.amount = '';
+  }
 }
 
 

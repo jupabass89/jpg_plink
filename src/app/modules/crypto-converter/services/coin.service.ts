@@ -24,7 +24,7 @@ export class CoinService {
     return this.http.get<any>(`${this.url}/prices?coin=${this.coinReference}`, this.httpOptions);
   }
 
-  convert(mount: number, coin1: string, coin2: string): Observable<any> {
-    return this.http.get<any>(`${this.url}/convert?qty=${mount}&from=${coin1}&to=${coin2}`, this.httpOptions);
+  convert(amount: string, coin1: string, coin2: string): Observable<any> {
+    return this.http.get<any>(`${this.url}/convert?qty=${amount}&from=${coin1}&to=${coin2}`, this.httpOptions);
   }
 }
