@@ -1,26 +1,23 @@
-<div>
+<form [formGroup]="form">
   <div class="titles">
     <h1 class="title">{{title}}</h1>
     <h2 class>{{subtitle}}</h2>
   </div>
   <div class="input coin-mount">
-    <input class="mount-input" type="text" value="{{initialMount}}">
+    <input formControlName="amount" class="mount-input" type="text">
   </div>
   <div class="input coin">
-    <div>
-      <select class="selector">
+    <select class="selector" [(ngModel)]="from" formControlName="from">
       <option *ngFor="let coin of coins">{{coin}}</option>
     </select>
-    </div>
-
   </div>
   <div class="input coin">
-      <select class="selector">
-        <option *ngFor="let coin of coins">{{coin}}</option>
+    <select class="selector" [(ngModel)]="to" formControlName="to">
+      <option *ngFor="let coin of coins">{{coin}}</option>
     </select>
   </div>
   <div class="input coin-result">
-    {{result}}
+    <input type="text" value="{{result}}">
   </div>
-</div>
+</form>
 <img class="exchange" src="../../../assets/exchange.png" alt="exchange">

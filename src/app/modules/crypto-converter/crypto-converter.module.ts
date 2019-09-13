@@ -8,7 +8,7 @@ import { AppMaterialModule } from '../app-material/app-material.module';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { CoinService } from './services/coin.service';
 import { HTTP_INTERCEPTORS, HttpClientModule, HttpClient} from '@angular/common/http';
-
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +20,9 @@ import { HTTP_INTERCEPTORS, HttpClientModule, HttpClient} from '@angular/common/
   imports: [
     CommonModule,
     AppMaterialModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
 
   ], exports: [
     CryptoConverterComponent
