@@ -30,7 +30,7 @@ export class ConverterComponent implements OnInit {
   }
 
   convertCoins() {
-    if (!this.form.invalid) {
+    if (!isNaN(this.form.get('amount').value) && !this.form.invalid) {
       const amount = this.form.get('amount').value;
       const from = this.form.get('from').value;
       const to = this.form.get('to').value;
