@@ -13,8 +13,8 @@ export class ConverterComponent implements OnInit {
   constructor(private coinService: CoinService, private formBuilder: FormBuilder) {
     this.form = this.formBuilder.group({
       amount: ['', Validators.compose([Validators.required, Validators.min(1)])],
-      from: ['BTC', Validators.compose([Validators.required])],
-      to: ['USD', Validators.compose([Validators.required])],
+      from: ['', Validators.compose([Validators.required])],
+      to: ['', Validators.compose([Validators.required])],
     });
   }
 
@@ -23,7 +23,6 @@ export class ConverterComponent implements OnInit {
   coins = [];
   form: FormGroup;
   result: '';
-  amount = '0,00';
 
   ngOnInit() {
     this.getCoins();
@@ -31,10 +30,7 @@ export class ConverterComponent implements OnInit {
   }
 
   convertCoins() {
-    if (this.form.invalid) {
-      this.form.get('amount').setValue('0,00');
-      this.result = '';
-    } else {
+    if (!this.form.invalid) {
       const amount = this.form.get('amount').value;
       const from = this.form.get('from').value;
       const to = this.form.get('to').value;
@@ -61,9 +57,5 @@ export class ConverterComponent implements OnInit {
     this.form.get('from').setValue(to);
     this.form.get('to').setValue(from);
     this.convertCoins();
-  }
-
-  editAmount() {
-    this.amount = '';
   }
 }

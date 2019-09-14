@@ -70,6 +70,10 @@
     text-align-last: center;
   }
 
+  ::placeholder {
+    color: $grey-light;
+  }
+
   .result {
     background-color: $background;
   }

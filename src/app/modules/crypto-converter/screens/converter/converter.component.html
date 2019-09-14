@@ -4,7 +4,13 @@
     <h2 class>{{subtitle}}</h2>
   </div>
   <div class="field coin-amount">
-    <input formControlName="amount" (click)="editAmount()" [(ngModel)]="amount" class="input" type="text">
+    <input
+    formControlName="amount"
+    class="input"
+    type="text"
+    placeholder="0,00"
+    onfocus="placeholder = ''"
+    onblur="this.placeholder = '0,00'">
   </div>
   <div class="field coin">
     <select class="input" formControlName="from">
