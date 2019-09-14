@@ -4,27 +4,21 @@
     <h2 class>Select currency</h2>
   </div>
   <div class="field coin-amount">
-    <input
-    formControlName="amount"
-    class="input"
-    type="number"
-    placeholder="0,00"
-    onfocus="placeholder = ''"
-    onblur="this.placeholder = '0,00'">
+    <input #amount formControlName="amount" class="input" type="number" step="any" placeholder="0,00" onfocus="placeholder = ''"
+      onblur="placeholder = '0,00'">
   </div>
   <div class="field coin">
-    <select class="input" formControlName="from">
+    <select class="input" formControlName="from" (change)="convertCoins()">
       <option *ngFor="let coin of coins">{{coin}}</option>
     </select>
   </div>
   <div class="field coin">
-    <select class="input" formControlName="to">
+    <select class="input" formControlName="to" (change)="convertCoins()">
       <option *ngFor="let coin of coins">{{coin}}</option>
     </select>
   </div>
   <div class="field coin-result">
-    <input class="input result" type="text" value="{{result}}">
+    <span class="result" type="text" >{{result}}</span>
   </div>
 </form>
-
-<img (click)="exchange()" class="exchange" src="../../../assets/exchange.png" alt="exchange">
+<button (click)="exchange()" class="exchange">
