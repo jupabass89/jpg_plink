@@ -30,30 +30,6 @@ export class ConverterComponent implements OnInit {
     this.listenToAmountChanges();
   }
 
-  listenToAmountChanges() {
-    fromEvent(this.amount.nativeElement, 'keyup').pipe(
-      map((event: any) => {
-        return event.target.value;
-      })
-      , debounceTime(200)
-    ).subscribe((amount: number) => {
-      this.convertCoins(amount);
-    });
-  }
-
-  convertCoins(amount: number) {
-    if (!this.form.invalid && this.form.get('amount').value !== 0) {
-      const from = this.form.get('from').value;
-      const to = this.form.get('to').value;
-      this.coinService.convert(amount, from, to).subscribe(res => {
-        this.result = res.to_quantity;
-      });
-    } else {
-      this.form.get('amount').setValue('');
-      this.result = null;
-    }
-  }
-
   getCoins() {
     this.coinService.getPrices().subscribe((res) => {
       res.prices.map(coin => {
@@ -71,5 +47,29 @@ export class ConverterComponent implements OnInit {
     this.form.get('from').setValue(to);
     this.form.get('to').setValue(from);
     this.convertCoins(this.form.get('amount').value);
+  }
+
+  convertCoins(amount: number) {
+    if (!this.form.invalid && this.form.get('amount').value !== 0) {
+      const from = this.form.get('from').value;
+      const to = this.form.get('to').value;
+      this.coinService.convert(amount, from, to).subscribe(res => {
+        this.result = res.to_quantity;
+      });
+    } else {
+      this.form.get('amount').setValue('');
+      this.result = null;
+    }
+  }
+
+  listenToAmountChanges() {
+    fromEvent(this.amount.nativeElement, 'keyup').pipe(
+      map((event: any) => {
+        return event.target.value;
+      })
+      , debounceTime(200)
+    ).subscribe((amount: number) => {
+      this.convertCoins(amount);
+    });
   }
 }
