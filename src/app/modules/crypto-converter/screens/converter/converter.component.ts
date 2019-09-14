@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { CoinService } from '../../services/coin.service';
-import { Observable } from 'rxjs';
+import { Observable, fromEvent } from 'rxjs';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { debounceTime, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-converter',
@@ -12,30 +13,21 @@ export class ConverterComponent implements OnInit {
 
   constructor(private coinService: CoinService, private formBuilder: FormBuilder) {
     this.form = this.formBuilder.group({
-      amount: ['', Validators.compose([Validators.required, Validators.min(1)])],
+      amount: ['', Validators.compose([Validators.required, Validators.min(0)])],
       from: ['', Validators.compose([Validators.required])],
       to: ['', Validators.compose([Validators.required])],
     });
   }
 
+  @ViewChild('amount', { static: true }) amount: ElementRef;
   coins = [];
   form: FormGroup;
   result: 0;
 
   ngOnInit() {
     this.getCoins();
-    this.convertCoins();
-  }
-
-  convertCoins() {
-    if (!this.form.invalid) {
-      const amount = this.form.get('amount').value;
-      const from = this.form.get('from').value;
-      const to = this.form.get('to').value;
-      this.coinService.convert(amount, from, to).subscribe(res => {
-        this.result = res.to_quantity;
-      });
-    }
+    this.convertCoins(this.form.get('amount').value);
+    this.listenToAmountChanges();
   }
 
   getCoins() {
@@ -54,6 +46,30 @@ export class ConverterComponent implements OnInit {
     const to = this.form.get('to').value;
     this.form.get('from').setValue(to);
     this.form.get('to').setValue(from);
-    this.convertCoins();
+    this.convertCoins(this.form.get('amount').value);
+  }
+
+  convertCoins(amount: number) {
+    if (!this.form.invalid && this.form.get('amount').value !== 0) {
+      const from = this.form.get('from').value;
+      const to = this.form.get('to').value;
+      this.coinService.convert(amount, from, to).subscribe(res => {
+        this.result = res.to_quantity;
+      });
+    } else {
+      this.form.get('amount').setValue('');
+      this.result = null;
+    }
+  }
+
+  listenToAmountChanges() {
+    fromEvent(this.amount.nativeElement, 'keyup').pipe(
+      map((event: any) => {
+        return event.target.value;
+      })
+      , debounceTime(200)
+    ).subscribe((amount: number) => {
+      this.convertCoins(amount);
+    });
   }
 }
