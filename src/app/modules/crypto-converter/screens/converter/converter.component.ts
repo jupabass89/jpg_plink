@@ -18,8 +18,6 @@ export class ConverterComponent implements OnInit {
     });
   }
 
-  title = 'Realizar cambio';
-  subtitle = 'Seleccione las monedas';
   coins = [];
   form: FormGroup;
   result: 0;
@@ -30,7 +28,7 @@ export class ConverterComponent implements OnInit {
   }
 
   convertCoins() {
-    if (!isNaN(this.form.get('amount').value) && !this.form.invalid) {
+    if (!this.form.invalid) {
       const amount = this.form.get('amount').value;
       const from = this.form.get('from').value;
       const to = this.form.get('to').value;
