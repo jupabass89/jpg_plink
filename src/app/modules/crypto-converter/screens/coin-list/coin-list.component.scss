@@ -12,19 +12,24 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 630px;
   padding: 60px 160px;
+  width: auto;
 }
 
 .table-header {
   align-items: center;
   border: 1px solid $grey-light;
   box-shadow: 0 2px 4px 0 $box-shadow;
-  column-gap: 80px;
+  column-gap: 75px;
   display: grid;
   grid-template-columns: repeat(4, 160px);
   height: 75px;
   margin-bottom: 17px;
   padding: 17px;
   width: 900px;
+}
+
+.convert {
+  text-align: center;
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Coin } from '../../models/coin';
+import { CoinService } from '../../services/coin.service';
 
 @Component({
   selector: 'app-coin-list',
@@ -8,42 +9,23 @@ import { Coin } from '../../models/coin';
 })
 export class CoinListComponent implements OnInit {
 
-  coins: Coin[] = [
-   {
-      id_currency: '56',
-      name: 'USD',
-      price: '14,000',
-      crypto: 'no'
-    },
-    {
-      id_currency: '900',
-      name: 'BTC',
-      price: '14,000',
-      crypto: 'yes'
-    }
-  ];
+  coins: Coin[];
 
-  coin1: Coin = {
-    id_currency: '56',
-    name: 'USD',
-    price: '14,000',
-    crypto: 'no'
-  };
 
-  coin2: Coin = {
-    id_currency: '900',
-    name: 'BTC',
-    price: '14,000',
-    crypto: 'yes'
-  };
-
-  constructor() { }
+  constructor(private coinService: CoinService) { }
 
   ngOnInit() {
-    this.coins.push(this.coin1, this.coin2);
+    this.coinService.getPrices().subscribe(response => {
+      response.prices.map(res => {
+        res.price = new Intl.NumberFormat('en-us', { minimumFractionDigits: 1 }).format(res.price);
+        res.crypto === '0' ? res.crypto = 'No' : res.crypto = 'Yes';
+      });
+      this.coins = response.prices;
+    });
   }
 
+
   onScrollDown() {
-    console.log('scroll');
+    //console.log('scroll');
   }
 }
