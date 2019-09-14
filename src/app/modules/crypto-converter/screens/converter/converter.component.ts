@@ -22,7 +22,7 @@ export class ConverterComponent implements OnInit {
   subtitle = 'Seleccione las monedas';
   coins = [];
   form: FormGroup;
-  result: '';
+  result: 0;
 
   ngOnInit() {
     this.getCoins();
