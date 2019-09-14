@@ -1,25 +1,24 @@
-<div>
-  <form [formGroup]="form">
-    <div class="titles">
-      <h1 class="title">{{title}}</h1>
-      <h2 class>{{subtitle}}</h2>
-    </div>
-    <div class="input coin-mount">
-      <input formControlName="amount" (click)="editAmount()" [(ngModel)]="amount" class="mount-input" type="text">
-    </div>
-    <div class="input coin">
-      <select class="selector" formControlName="from">
-        <option *ngFor="let coin of coins">{{coin}}</option>
-      </select>
-    </div>
-    <div class="input coin">
-      <select class="selector" formControlName="to">
-        <option *ngFor="let coin of coins">{{coin}}</option>
-      </select>
-    </div>
-  </form>
-  <div class="input coin-result">
-    <input type="text" [(ngModel)]="result" value="{{result}}">
+<form [formGroup]="form">
+  <div class="titles">
+    <h1 class="title">{{title}}</h1>
+    <h2 class>{{subtitle}}</h2>
   </div>
-</div>
+  <div class="field coin-amount">
+    <input formControlName="amount" (click)="editAmount()" [(ngModel)]="amount" class="input" type="text">
+  </div>
+  <div class="field coin">
+    <select class="input" formControlName="from">
+      <option *ngFor="let coin of coins">{{coin}}</option>
+    </select>
+  </div>
+  <div class="field coin">
+    <select class="input" formControlName="to">
+      <option *ngFor="let coin of coins">{{coin}}</option>
+    </select>
+  </div>
+  <div class="field coin-result">
+    <input class="input result" type="text" value="{{result}}">
+  </div>
+</form>
+
 <img (click)="exchange()" class="exchange" src="../../../assets/exchange.png" alt="exchange">

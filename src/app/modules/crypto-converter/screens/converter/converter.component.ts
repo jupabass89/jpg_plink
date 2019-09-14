@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CoinService } from '../../services/coin.service';
-import { observable, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { ConvertActionBindingResult } from '@angular/compiler/src/compiler_util/expression_converter';
 
 @Component({
   selector: 'app-converter',
@@ -11,7 +10,13 @@ import { ConvertActionBindingResult } from '@angular/compiler/src/compiler_util/
 })
 export class ConverterComponent implements OnInit {
 
-  constructor(private coinService: CoinService, private formBuilder: FormBuilder) { }
+  constructor(private coinService: CoinService, private formBuilder: FormBuilder) {
+    this.form = this.formBuilder.group({
+      amount: ['', Validators.compose([Validators.required, Validators.min(1)])],
+      from: ['BTC', Validators.compose([Validators.required])],
+      to: ['USD', Validators.compose([Validators.required])],
+    });
+  }
 
   title = 'Realizar cambio';
   subtitle = 'Seleccione las monedas';
@@ -20,29 +25,23 @@ export class ConverterComponent implements OnInit {
   result: '';
   amount = '0,00';
 
-
   ngOnInit() {
     this.getCoins();
-
-    this.form = this.formBuilder.group({
-      amount: ['', Validators.compose([Validators.required, Validators.min(0)])],
-      from: ['BTC', Validators.compose([Validators.required])],
-      to: ['USD', Validators.compose([Validators.required])],
-    });
+    this.convertCoins();
   }
 
   convertCoins() {
-    if (this.amount !== ('0,00' && '0') && this.amount !== '') {
+    if (this.form.invalid) {
+      this.form.get('amount').setValue('0,00');
+      this.result = '';
+    } else {
       const amount = this.form.get('amount').value;
       const from = this.form.get('from').value;
       const to = this.form.get('to').value;
       this.coinService.convert(amount, from, to).subscribe(res => {
-        console.log(res);
-        return this.result = res.to_quantity;
+        this.result = res.to_quantity;
       });
     }
-    this.amount = '0,00';
-    return this.result = '';
   }
 
   getCoins() {
@@ -68,6 +67,3 @@ export class ConverterComponent implements OnInit {
     this.amount = '';
   }
 }
-
-
-
