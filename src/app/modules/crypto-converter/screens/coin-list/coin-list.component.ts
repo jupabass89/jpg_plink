@@ -11,7 +11,6 @@ export class CoinListComponent implements OnInit {
 
   coins: Coin[];
 
-
   constructor(private coinService: CoinService) { }
 
   ngOnInit() {
@@ -23,7 +22,6 @@ export class CoinListComponent implements OnInit {
       this.coins = response.prices;
     });
   }
-
 
   onScrollDown() {
     //console.log('scroll');

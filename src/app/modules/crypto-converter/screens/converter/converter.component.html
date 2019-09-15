@@ -9,12 +9,12 @@
   </div>
   <div class="field coin">
     <select class="input" formControlName="from" (change)="convertCoins()">
-      <option *ngFor="let coin of coins">{{coin}}</option>
+      <option *ngFor="let coin of coins" value="{{coin}}">{{coin}}</option>
     </select>
   </div>
   <div class="field coin">
     <select class="input" formControlName="to" (change)="convertCoins()">
-      <option *ngFor="let coin of coins">{{coin}}</option>
+      <option *ngFor="let coin of coins" value="{{coin}}">{{coin}}</option>
     </select>
   </div>
   <div class="field coin-result">

@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { CoinService } from '../../services/coin.service';
-import { Observable, fromEvent } from 'rxjs';
+import { fromEvent, Observable } from 'rxjs';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { debounceTime, map } from 'rxjs/operators';
 
@@ -23,11 +23,16 @@ export class ConverterComponent implements OnInit {
   coins = [];
   form: FormGroup;
   result: 0;
+  defCoin = 'USD';
+  defCrypto = 'BTC';
+  $currentCoin: Observable<any>;
 
   ngOnInit() {
     this.getCoins();
-    this.convertCoins(this.form.get('amount').value);
-    this.listenToAmountChanges();
+    this.amountChanges();
+    this.coinService.crypto.subscribe(res => {
+      this.form.get('from').setValue(res);
+    });
   }
 
   getCoins() {
@@ -36,17 +41,26 @@ export class ConverterComponent implements OnInit {
         coin = coin.id_currency;
         this.coins.push(coin);
       });
-      this.coins.push('BTC');
-      this.coins.sort();
+      this.setDefaults();
     });
   }
 
-  exchange() {
-    const from = this.form.get('from').value;
-    const to = this.form.get('to').value;
-    this.form.get('from').setValue(to);
-    this.form.get('to').setValue(from);
-    this.convertCoins(this.form.get('amount').value);
+  setDefaults() {
+    this.form.get('from').setValue(this.defCrypto);
+    this.form.get('to').setValue(this.defCoin);
+    this.coins.push(this.defCrypto);
+    this.coins.sort();
+  }
+
+  amountChanges() {
+    fromEvent(this.amount.nativeElement, 'keyup').pipe(
+      map((event: any) => {
+        return event.target.value;
+      })
+      , debounceTime(200)
+    ).subscribe((amount: number) => {
+      this.convertCoins(amount);
+    });
   }
 
   convertCoins(amount: number) {
@@ -62,14 +76,11 @@ export class ConverterComponent implements OnInit {
     }
   }
 
-  listenToAmountChanges() {
-    fromEvent(this.amount.nativeElement, 'keyup').pipe(
-      map((event: any) => {
-        return event.target.value;
-      })
-      , debounceTime(200)
-    ).subscribe((amount: number) => {
-      this.convertCoins(amount);
-    });
+  exchange() {
+    const from = this.form.get('from').value;
+    const to = this.form.get('to').value;
+    this.form.get('from').setValue(to);
+    this.form.get('to').setValue(from);
+    this.convertCoins(this.form.get('amount').value);
   }
 }
