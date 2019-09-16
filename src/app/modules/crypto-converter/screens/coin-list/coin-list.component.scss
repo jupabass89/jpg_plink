@@ -40,11 +40,17 @@
 
 @media only screen and (max-width: 1024px) {
   :host {
+    height: 100%;
     padding: 20px;
   }
 
   .table-header {
     column-gap: 60px;
+    width: 100%;
+  }
+
+  .viewport {
+    height: 400px;
     width: 100%;
   }
 }

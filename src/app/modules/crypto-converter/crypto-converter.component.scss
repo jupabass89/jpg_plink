@@ -71,15 +71,21 @@
 
 
 @media only screen and (max-width: 1024px) {
-  ::ng-deep  mat-tab-group {
-    width: 100%;
+  ::ng-deep .mat-tab-group.mat-primary {
+    width: 100%;;
+  }
+
+  .converter {
+    height: 500px;
+    padding: 40px 20px;;
   }
 
   .main-frame {
-    background-color: #FFF;
-    border-radius: 3px;
-    box-shadow: 0 0 1px 0 $black;
-    height: 821px;
-    width: 100%;;
+    height: 90%;
+    width: 100%;
+  }
+
+  .coin-list {
+    height: 100%;
   }
 }
