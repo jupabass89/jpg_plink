@@ -2,10 +2,10 @@
   <div class="main-frame">
     <mat-tab-group mat-align-tabs="center" [selectedIndex]="idxTab.value"
       (selectedIndexChange)="idxTab.setValue($event)">
-      <mat-tab label="MAKE CHANGE">
+      <mat-tab label="{{changeTabLabel}}">
         <app-converter class="converter"></app-converter>
       </mat-tab>
-      <mat-tab label="CURRENCY LIST">
+      <mat-tab label="{{currencyTabLabel}}">
         <app-coin-list class="coin-list"></app-coin-list>
       </mat-tab>
     </mat-tab-group>

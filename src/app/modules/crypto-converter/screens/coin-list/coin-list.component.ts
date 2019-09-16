@@ -9,9 +9,13 @@ import { CoinService } from '../../services/coin.service';
 })
 export class CoinListComponent implements OnInit {
 
-  coins: Coin[];
-
   constructor(private coinService: CoinService) { }
+
+  coins: Coin[];
+  name = 'Name';
+  price = 'Price';
+  crypto = 'Cryptocurrency';
+  convert = 'Convert';
 
   ngOnInit() {
     this.coinService.getPrices().subscribe(response => {
