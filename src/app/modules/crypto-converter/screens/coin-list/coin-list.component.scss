@@ -5,7 +5,7 @@
   font-family: $font;
   font-size: 15px;
   font-weight: 100;
-  letter-spacing: 3px;;
+  letter-spacing: 3px;
 }
 
 :host {
@@ -36,4 +36,15 @@
 .viewport {
   height: 500px;
   width: 100%;
+}
+
+@media only screen and (max-width: 1024px) {
+  :host {
+    padding: 20px;
+  }
+
+  .table-header {
+    column-gap: 60px;
+    width: 100%;
+  }
 }

@@ -5,7 +5,7 @@
   font-family: $font;
   font-size: 15px;
   font-weight: 100;
-  letter-spacing: 3px;;
+  letter-spacing: 3px;
 }
 
 :host {
@@ -51,7 +51,7 @@
   display: grid;
   grid-template-columns: repeat(4, 160px);
   padding: 17px;
-  width: 900px;;
+  width: 900px;
 }
 
 .type {
@@ -88,5 +88,21 @@
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
     width: 20px;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .table-row {
+    column-gap: 60px;
+    grid-template-columns: repeat(4, 140px);
+    width: 100%;
+  }
+
+  .shuffle {
+    justify-self: end;
+  }
+
+  .yes {
+    justify-self: end;
   }
 }

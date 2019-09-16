@@ -66,5 +66,20 @@
 ::ng-deep .mat-tab-group.mat-primary .mat-ink-bar,
 .mat-tab-nav-bar.mat-primary .mat-ink-bar {
   background-color: $blue;
-  height: 9px;;
+  height: 9px;
+}
+
+
+@media only screen and (max-width: 1024px) {
+  ::ng-deep  mat-tab-group {
+    width: 100%;
+  }
+
+  .main-frame {
+    background-color: #FFF;
+    border-radius: 3px;
+    box-shadow: 0 0 1px 0 $black;
+    height: 821px;
+    width: 100%;;
+  }
 }
