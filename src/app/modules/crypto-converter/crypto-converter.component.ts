@@ -19,5 +19,4 @@ export class CryptoConverterComponent implements OnInit {
       this.idxTab.setValue(0);
     });
   }
-
 }

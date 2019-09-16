@@ -14,7 +14,10 @@
   flex-direction: column;
   height: 630px;
   padding: 60px 160px;
-  width: auto;
+}
+
+.convert {
+  text-align: center;
 }
 
 .table-header {
@@ -30,6 +33,7 @@
   width: 900px;
 }
 
-.convert {
-  text-align: center;
+.viewport {
+  height: 500px;
+  width: 100%;
 }

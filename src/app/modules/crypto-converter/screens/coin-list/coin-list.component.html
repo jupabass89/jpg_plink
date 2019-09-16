@@ -1,9 +1,9 @@
-<div>
-  <div class="table-row table-header">
-    <h1>Name</h1>
-    <h1>Price</h1>
-    <h1>Cryptocurrency</h1>
-    <h1 class="convert">Convert</h1>
-  </div>
-  <app-coin *ngFor="let coin of coins" [coin]="coin"></app-coin>
+<div class="table-row table-header">
+  <span>Name</span>
+  <span>Price</span>
+  <span>Cryptocurrency</span>
+  <span class="convert">Convert</span>
 </div>
+<cdk-virtual-scroll-viewport itemSize="20" class="viewport">
+  <app-coin *cdkVirtualFor="let coin of coins" [coin]="coin"></app-coin>
+</cdk-virtual-scroll-viewport>
