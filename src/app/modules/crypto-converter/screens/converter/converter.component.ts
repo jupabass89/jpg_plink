@@ -31,7 +31,7 @@ export class ConverterComponent implements OnInit {
     this.getCoins();
     this.amountChanges();
     this.coinService.crypto.subscribe(res => {
-      this.form.get('from').setValue(res);
+      this.form.get('to').setValue(res);
     });
   }
 
@@ -63,16 +63,17 @@ export class ConverterComponent implements OnInit {
     });
   }
 
-  convertCoins(amount: number) {
-    if (!this.form.invalid && this.form.get('amount').value !== 0) {
+  convertCoins(amount?: number) {
+    if (!amount) { amount = this.form.get('amount').value; }
+    if (!this.form.invalid && this.form.get('amount').value !== '' && this.form.get('amount').value !== 0) {
       const from = this.form.get('from').value;
       const to = this.form.get('to').value;
       this.coinService.convert(amount, from, to).subscribe(res => {
         this.result = res.to_quantity;
       });
     } else {
-      this.form.get('amount').setValue('');
       this.result = null;
+      this.form.get('amount').setValue(null);
     }
   }
 
