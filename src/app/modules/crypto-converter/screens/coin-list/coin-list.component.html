@@ -1,8 +1,8 @@
 <div class="table-row table-header">
-  <span>{{name}}</span>
-  <span>{{price}}</span>
-  <span>{{crypto}}</span>
-  <span class="convert">{{convert}}</span>
+  <span>{{'name' | translate }}</span>
+  <span>{{'price' | translate }}</span>
+  <span>{{'crypto' | translate }}</span>
+  <span class="convert">{{'convert'| translate }}</span>
 </div>
 <cdk-virtual-scroll-viewport itemSize="20" class="viewport">
   <app-coin *cdkVirtualFor="let coin of coins" [coin]="coin"></app-coin>

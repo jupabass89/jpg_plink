@@ -11,8 +11,6 @@ export class CryptoConverterComponent implements OnInit {
 
   @ViewChild('tabs', { static: true }) tabs;
   idxTab = new FormControl();
-  changeTabLabel = 'MAKE CHANGE';
-  currencyTabLabel = 'CURRENCY LIST';
 
   constructor(private coinService: CoinService) { }
 

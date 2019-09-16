@@ -26,8 +26,6 @@ export class ConverterComponent implements OnInit {
   defCoin = 'USD';
   defCrypto = 'BTC';
   $currentCoin: Observable<any>;
-  title = 'Make the chage';
-  subtitle = 'Select currency';
 
   ngOnInit() {
     this.getCoins();
