@@ -44,8 +44,13 @@
     padding: 20px;
   }
 
+  .convert {
+    text-align: start;
+  }
+
   .table-header {
     column-gap: 60px;
+    grid-template-columns: repeat(4, 155px);
     width: 100%;
   }
 
