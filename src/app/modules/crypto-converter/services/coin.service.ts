@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, ObservedValueOf, Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +26,7 @@ export class CoinService {
   }
 
   changeCoin(crypto: string): void {
-    this.$crypto.next(crypto);
+    return this.$crypto.next(crypto);
   }
 
   getPrices(): Observable<any> {

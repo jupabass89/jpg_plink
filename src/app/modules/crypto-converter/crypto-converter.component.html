@@ -1,6 +1,6 @@
 <div class="cripto-app">
   <div class="main-frame">
-    <mat-tab-group>
+    <mat-tab-group mat-align-tabs="center" [selectedIndex]="idxTab.value" (selectedIndexChange)="idxTab.setValue($event)">
       <mat-tab label="MAKE CHANGE">
         <app-converter class="converter"></app-converter>
       </mat-tab>
@@ -10,3 +10,5 @@
     </mat-tab-group>
   </div>
 </div>
+
+
