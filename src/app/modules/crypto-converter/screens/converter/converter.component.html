@@ -1,7 +1,7 @@
 <form [formGroup]="form">
   <div class="titles">
     <h1 class="title">{{ 'title' | translate }}</h1>
-    <h2 class>{{ 'subtitle' | translate }}</h2>
+    <h2 class="subtitle">{{ 'subtitle' | translate }}</h2>
   </div>
   <div class="field coin-amount">
     <input #amount formControlName="amount" class="input" type="number" step="any" placeholder="0,00" onfocus="placeholder = ''"

@@ -10,7 +10,7 @@ export class CoinService {
 
   constructor(private http: HttpClient) { }
 
-  private url = environment.uralApi;
+  private url = environment.urlApi;
   private coinReference = 'btc';
   $crypto: Subject<any> = new Subject();
 

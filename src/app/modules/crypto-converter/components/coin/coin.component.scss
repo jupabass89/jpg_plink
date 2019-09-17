@@ -3,9 +3,9 @@
 * {
   color: $black;
   font-family: $font;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 100;
-  letter-spacing: 3px;
+  letter-spacing: 0.91px;
 }
 
 :host {
@@ -21,16 +21,12 @@
 
   &::before {
     background-color: $red;
-    background-size: 20px 20px;
     border-radius: 50%;
     content: '';
-    height: 20px;
+    height: 15px;
     left: -25px;
     position: absolute;
-    top: 10px;
-    -webkit-transform: translateY(-50%);
-    transform: translateY(-50%);
-    width: 20px;
+    width: 15px;
   }
 }
 
@@ -42,6 +38,16 @@
   letter-spacing: 1.14px;
   line-height: 27px;
   width: 260px;
+}
+
+.shuffle {
+  background-image: url('../../../../../assets/shuffle.png');
+  background-repeat: no-repeat;
+  background-size: 31px 36px;
+  cursor: pointer;
+  height: 40px;
+  justify-self: center;
+  width: 40px;
 }
 
 .table-row {
@@ -62,36 +68,27 @@
   width: 30px;
 }
 
-.shuffle {
-  background-image: url('../../../../../assets/shuffle.png');
-  background-repeat: no-repeat;
-  background-size: 30px 30px;
-  cursor: pointer;
-  height: 30px;
-  justify-self: center;
-  width: 40px;
-}
-
 .yes {
   color: $green;
   justify-self: center;
 
   &::before {
     background-color: $green;
-    background-size: 20px 20px;
     border-radius: 50%;
     content: '';
-    height: 20px;
+    height: 15px;
     left: -25px;
     position: absolute;
-    top: 10px;
-    -webkit-transform: translateY(-50%);
-    transform: translateY(-50%);
-    width: 20px;
+    width: 15px;
   }
 }
 
+
 @media only screen and (max-width: 1024px) {
+  .no {
+    justify-self: start;
+  }
+
   .shuffle {
     justify-self: start;
   }
@@ -100,10 +97,6 @@
     column-gap: 60px;
     grid-template-columns: repeat(4, 1fr);
     width: 100%;
-  }
-
-  .no {
-    justify-self: start;
   }
 
   .yes {

@@ -20,7 +20,7 @@ export class CoinListComponent implements OnInit {
     this.coinService.getPrices().subscribe(response => {
       response.prices.map(res => {
         res.price = new Intl.NumberFormat('en-us', { minimumFractionDigits: 1 }).format(res.price);
-        res.crypto === '0' ? res.crypto = 'No' : res.crypto = 'Yes';
+        res.crypto === '0' ? res.crypto = 'NO' : res.crypto = 'YES';
       });
       this.coins = response.prices;
       this.renderedCoins = this.coins.slice(0, this.max);
