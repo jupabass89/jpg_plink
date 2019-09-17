@@ -66,5 +66,26 @@
 ::ng-deep .mat-tab-group.mat-primary .mat-ink-bar,
 .mat-tab-nav-bar.mat-primary .mat-ink-bar {
   background-color: $blue;
-  height: 9px;;
+  height: 9px;
+}
+
+
+@media only screen and (max-width: 1024px) {
+  ::ng-deep .mat-tab-group.mat-primary {
+    width: 100%;;
+  }
+
+  .converter {
+    height: 500px;
+    padding: 40px 20px;;
+  }
+
+  .main-frame {
+    height: 90%;
+    width: 100%;
+  }
+
+  .coin-list {
+    height: 100%;
+  }
 }

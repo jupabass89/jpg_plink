@@ -1,0 +1,12 @@
+{
+  "changeTabLabel": "REALIZAR CAMBIO",
+  "currencyTabLabel": "LISTADO DE MONEDAS",
+  "title": "Realizar cambio",
+  "subtitle": "Seleccione las monedas",
+  "Yes": "Si",
+  "No": "No",
+  "name": "Nombre",
+  "price": "Precio",
+  "crypto": "Criptomoneda",
+  "convert": "Convertir"
+}

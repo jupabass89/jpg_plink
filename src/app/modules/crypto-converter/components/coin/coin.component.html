@@ -1,1 +1,6 @@
-<p>coin works!</p>
+<div class="table-row">
+  <h1>{{coin.name}}</h1>
+  <h1 class="price">$ {{coin.price}}</h1>
+  <div class="type" [ngClass]="{no: coin.crypto === 'No', yes: coin.crypto === 'Yes'}">{{coin.crypto | translate }}</div>
+  <button class="shuffle" (click)="shuffleCrypto()"></button>
+</div>

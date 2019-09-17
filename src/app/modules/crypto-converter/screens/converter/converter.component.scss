@@ -10,7 +10,7 @@
 
 :host {
   display: flex;
-  height: 580px;
+  height: 590px;
   justify-content: center;
   padding: 45px;
 }
@@ -22,9 +22,7 @@
   height: 20px;
   position: absolute;
   right: 20px;
-  top: 25px;
-  -webkit-transform: translateY(-50%);
-  transform: translateY(-50%);
+  top: 17px;
   width: 20px;
 }
 
@@ -34,7 +32,7 @@
 }
 
 .coin-result,
-.coin-mount {
+.coin-amount {
   &::before {
     content: '$';
     font-size: 25px;
@@ -48,12 +46,15 @@
 
 .exchange {
   align-self: center;
+  background-image: url('../../../../../assets/exchange.png' );
+  background-repeat: no-repeat;
+  background-size: 30px;
   cursor: pointer;
   height: 30px;
   width: 30px;
 }
 
-.input {
+.field {
   align-items: center;
   border: solid 1px $grey-light;
   border-radius: 20px;
@@ -65,11 +66,20 @@
   position: relative;
   width: 330px;
 
-  .mount-input {
-    height: 30px;
+  .input {
+    background-color: rgb(255, 255, 255);
     position: relative;
     text-align: center;
-    width: 250px;
+    text-align-last: center;
+  }
+
+  ::placeholder {
+    color: $grey-light;
+  }
+
+  .result {
+    background-color: $background;
+    cursor: none;
   }
 }
 

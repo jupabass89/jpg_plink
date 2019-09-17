@@ -1,29 +1,24 @@
-<div>
+<form [formGroup]="form">
   <div class="titles">
-    <h1 class="title">{{title}}</h1>
-    <h2 class>{{subtitle}}</h2>
+    <h1 class="title">{{ 'title' | translate }}</h1>
+    <h2 class>{{ 'subtitle' | translate }}</h2>
   </div>
-  <div class="input coin-mount">
-    <input class="mount-input" type="text" value="{{initialMount}}">
+  <div class="field coin-amount">
+    <input #amount formControlName="amount" class="input" type="number" step="any" placeholder="0,00" onfocus="placeholder = ''"
+      onblur="placeholder = '0,00'">
   </div>
-  <div class="input coin">
-    <div>
-      <select style="background-color: rgb(255, 255, 255)">
-      <option value="1">BTC</option>
-      <option value="2">USD </option>
-      <option value="2">COP </option>
-    </select>
-    </div>
-
-  </div>
-  <div class="input coin">
-      <select style="background-color: rgb(255, 255, 255)">
-      <option value="1">BTC</option>
-      <option value="2">USD </option>
-      <option value="2">COP </option>
+  <div class="field coin">
+    <select class="input" formControlName="from" (change)="convertCoins()">
+      <option *ngFor="let coin of coins" value="{{coin}}">{{coin}}</option>
     </select>
   </div>
-  <div class="input coin-result">
+  <div class="field coin">
+    <select class="input" formControlName="to" (change)="convertCoins()">
+      <option *ngFor="let coin of coins" value="{{coin}}">{{coin}}</option>
+    </select>
   </div>
-</div>
-<img class="exchange" src="../../../assets/exchange.png" alt="exchange">
+  <div class="field coin-result">
+    <span class="result" type="text" >{{result}}</span>
+  </div>
+</form>
+<button (click)="exchange()" class="exchange">

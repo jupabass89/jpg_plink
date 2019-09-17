@@ -5,114 +5,59 @@
   font-family: $font;
   font-size: 15px;
   font-weight: 100;
-  letter-spacing: 3px;;
+  letter-spacing: 3px;
 }
 
 :host {
   align-items: center;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 690px;
   padding: 60px 160px;
 }
 
-.cripto {
-  font-weight: bold;
-  grid-column: 3;
-  padding-left: 40px;
-}
-
 .convert {
-  grid-column: 4;
-  justify-self: center;
+  text-align: center;
 }
 
-.item-coin {
-  border: 1px solid $grey-light;
-  height: 60px;
-}
-
-.table-row {
+.table-header {
   align-items: center;
   border: 1px solid $grey-light;
-  column-gap: 80px;
+  box-shadow: 0 2px 4px 0 $box-shadow;
+  column-gap: 75px;
   display: grid;
-  grid-template-columns: repeat(4, 160px);
+  grid-template-columns: repeat(4, 1fr);
+  height: 75px;
   margin-bottom: 17px;
   padding: 17px;
   width: 900px;;
 }
 
-.table-header {
-  border: 1px solid $grey-light;
-  box-shadow: 0 2px 4px 0 $box-shadow;
-  height: 75px;
-}
-
-.price {
-  color: $blue;
-  font-size: 20px;
-  font-weight: bold;
-  height: 27px;
-  letter-spacing: 1.14px;
-  line-height: 27px;
-  width: 190px;
-}
-
 .scroll {
+  height: 600px;
   overflow: auto;
 }
 
-.yes {
-  color: $green;
-  display: flex;
-  justify-content: center;
-  margin-left: 60px;
-  position: relative;
-  text-align: center;
-  width: 30px;
-
-  &::before {
-    background-color: $green;
-    background-size: 20px 20px;
-    border-radius: 50%;
-    content: '';
-    height: 20px;
-    left: -25px;
-    position: absolute;
-    top: 10px;
-    -webkit-transform: translateY(-50%);
-    transform: translateY(-50%);
-    width: 20px;
+@media only screen and (max-width: 1024px) {
+  :host {
+    padding: 20px;
   }
-}
 
-.no {
-  color: $red;
-  display: flex;
-  justify-content: center;
-  margin-left: 60px;
-  position: relative;
-  text-align: center;
-  width: 30px;
-
-  &::before {
-    background-color: $red;
-    background-size: 20px 20px;
-    border-radius: 50%;
-    content: '';
-    height: 20px;
-    left: -25px;
-    position: absolute;
-    top: 10px;
-    -webkit-transform: translateY(-50%);
-    transform: translateY(-50%);
-    width: 20px;
+  .convert {
+    text-align: start;
   }
-}
-.shuffle {
-  cursor: pointer;
-  height: 30px;
-  justify-self: center;
-  width: 40px;
+
+  .crypto {
+    text-align: center;
+  }
+
+  .table-header {
+    column-gap: 65px;
+    grid-template-columns: repeat(4, 1fr);
+    width: 830px;
+  }
+
+  .scroll {
+    height: 400px;
+  }
 }
