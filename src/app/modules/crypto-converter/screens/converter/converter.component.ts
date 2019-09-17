@@ -32,6 +32,7 @@ export class ConverterComponent implements OnInit {
     this.amountChanges();
     this.coinService.crypto.subscribe(res => {
       this.form.get('to').setValue(res);
+      this.convertCoins();
     });
   }
 

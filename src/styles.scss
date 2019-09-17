@@ -1,4 +1,5 @@
 @import 'equalizer';
+@import url('https://fonts.googleapis.com/css?family=Exo&display=swap');
 
 html,
 body {
@@ -9,5 +10,11 @@ body {
   margin: 0;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  margin: 0;
+}
