@@ -8,14 +8,13 @@ import { CoinService } from '../../services/coin.service';
   styleUrls: ['./coin-list.component.scss']
 })
 export class CoinListComponent implements OnInit {
+  coins: Coin[];
+  increase = 20;
+  max = 20;
+  renderedCoins: Coin[];
+  throttle = 600;
 
   constructor(private coinService: CoinService) { }
-
-  coins: Coin[];
-  name = 'Name';
-  price = 'Price';
-  crypto = 'Cryptocurrency';
-  convert = 'Convert';
 
   ngOnInit() {
     this.coinService.getPrices().subscribe(response => {
@@ -24,10 +23,12 @@ export class CoinListComponent implements OnInit {
         res.crypto === '0' ? res.crypto = 'No' : res.crypto = 'Yes';
       });
       this.coins = response.prices;
+      this.renderedCoins = this.coins.slice(0, this.max);
     });
   }
 
   onScrollDown() {
-    console.log('scroll....');
+    this.renderedCoins = this.renderedCoins.concat(this.coins.slice(this.max, this.max + this.increase));
+    this.max += this.increase;
   }
 }

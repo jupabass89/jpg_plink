@@ -4,12 +4,7 @@
   <span class="crypto">{{'crypto' | translate }}</span>
   <span class="convert">{{'convert'| translate }}</span>
 </div>
-<div
-class="scroll"
-infiniteScroll
-[infiniteScrollDistance]="2"
-[infiniteScrollThrottle]="500"
-(scrolled)="onScrollDown()"
-[scrollWindow]="false" >
-  <app-coin *ngFor="let coin of coins" [coin]="coin"></app-coin>
+<div class="scroll" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="100"
+  (scrolled)="onScrollDown()" [scrollWindow]="false">
+  <app-coin *ngFor="let coin of renderedCoins" [coin]="coin"></app-coin>
 </div>
