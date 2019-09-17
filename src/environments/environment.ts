@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  uralApi: 'https://bravenewcoin-v1.p.rapidapi.com/'
+  urlApi: 'https://bravenewcoin-v1.p.rapidapi.com/'
 };
 
 /*

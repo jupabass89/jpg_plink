@@ -1,11 +1,11 @@
 @import '../../variables';
 
 * {
-  color: $grey-light;
+  color: $input;
   font-family: $font;
   font-size: 25px;
   font-weight: 100;
-  letter-spacing: 3px;
+  letter-spacing: 3px;;
 }
 
 :host {
@@ -13,6 +13,10 @@
   height: 590px;
   justify-content: center;
   padding: 45px;
+}
+
+::placeholder {
+  color: $input;
 }
 
 .coin::before {
@@ -27,7 +31,7 @@
 }
 
 .coin-result {
-  background-color: $background;
+  background-color: $background-input;
   pointer-events: none;
 }
 
@@ -46,7 +50,7 @@
 
 .exchange {
   align-self: center;
-  background-image: url('../../../../../assets/exchange.png' );
+  background-image: url('../../../../../assets/exchange.png');
   background-repeat: no-repeat;
   background-size: 30px;
   cursor: pointer;
@@ -56,7 +60,7 @@
 
 .field {
   align-items: center;
-  border: solid 1px $grey-light;
+  border: solid 1px $input;
   border-radius: 20px;
   cursor: pointer;
   display: flex;
@@ -67,18 +71,15 @@
   width: 330px;
 
   .input {
-    background-color: rgb(255, 255, 255);
+    background-color: $withe;
     position: relative;
     text-align: center;
     text-align-last: center;
-  }
-
-  ::placeholder {
-    color: $grey-light;
+    width: 250px;
   }
 
   .result {
-    background-color: $background;
+    background-color: $background-input;
     cursor: none;
   }
 }
@@ -92,6 +93,15 @@
   .title {
     color: $black;
     font-size: 30px;
+    font-weight: 300;
+    letter-spacing: 1.71px;
     margin-bottom: 10px;
+  }
+
+  .subtitle {
+    color: $black;
+    font-size: 22px;
+    letter-spacing: 1.25px;
+    opacity: 0.2;
   }
 }
