@@ -11,6 +11,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule, HttpClient} from '@angular/common/
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -27,6 +28,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppMaterialModule,
     HttpClientModule,
     FormsModule,
+    InfiniteScrollModule,
     ReactiveFormsModule,
     TranslateModule.forChild({
       loader: {

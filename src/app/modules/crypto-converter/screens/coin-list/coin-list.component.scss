@@ -26,21 +26,20 @@
   box-shadow: 0 2px 4px 0 $box-shadow;
   column-gap: 75px;
   display: grid;
-  grid-template-columns: repeat(4, 160px);
+  grid-template-columns: repeat(4, 1fr);
   height: 75px;
   margin-bottom: 17px;
   padding: 17px;
-  width: 900px;
+  width: 900px;;
 }
 
-.viewport {
-  height: 500px;
-  width: 100%;
+.scroll {
+  height: 600px;
+  overflow: auto;
 }
 
 @media only screen and (max-width: 1024px) {
   :host {
-    height: 100%;
     padding: 20px;
   }
 
@@ -48,14 +47,17 @@
     text-align: start;
   }
 
-  .table-header {
-    column-gap: 60px;
-    grid-template-columns: repeat(4, 155px);
-    width: 100%;
+  .crypto {
+    text-align: center;
   }
 
-  .viewport {
+  .table-header {
+    column-gap: 65px;
+    grid-template-columns: repeat(4, 1fr);
+    width: 830px;
+  }
+
+  .scroll {
     height: 400px;
-    width: 100%;
   }
 }

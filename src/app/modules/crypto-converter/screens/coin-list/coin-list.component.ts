@@ -26,4 +26,8 @@ export class CoinListComponent implements OnInit {
       this.coins = response.prices;
     });
   }
+
+  onScrollDown() {
+    console.log('scroll....');
+  }
 }

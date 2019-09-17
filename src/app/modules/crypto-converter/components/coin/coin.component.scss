@@ -92,21 +92,21 @@
 }
 
 @media only screen and (max-width: 1024px) {
+  .shuffle {
+    justify-self: start;
+  }
+
   .table-row {
     column-gap: 60px;
-    grid-template-columns: repeat(4, 140px);
+    grid-template-columns: repeat(4, 1fr);
     width: 100%;
   }
 
-  .shuffle {
-    margin-left: 40px;
+  .no {
+    justify-self: start;
   }
 
   .yes {
-    justify-self: end;
-  }
-
-  .no {
-    justify-self: end;
+    justify-self: start;
   }
 }
